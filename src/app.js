@@ -11,8 +11,6 @@ server.use(middlewares);
 function addFieldSearch(resource, searchableFields = ["title"]) {
   server.get(`/${resource}`, (req, res, next) => {
     const { _q } = req.query;
-    console.log("req.query: ", req.query, _q);
-
     if (_q) {
       const data = router.db.get(resource).value();
       if (!Array.isArray(data)) {
