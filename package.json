@@ -1,0 +1,14 @@
+{
+  "name": "mockap-json-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "description": "Mockapi based on json-server.",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}
