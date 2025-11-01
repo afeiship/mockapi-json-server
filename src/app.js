@@ -31,9 +31,8 @@ function addFieldSearch(resource, searchableFields = ["title"]) {
 
 // 应用到 posts 资源，仅在 title 字段搜索
 addFieldSearch("posts", ["title"]);
-
 // 如果以后需要支持 comments 的 text 字段：
-// addFieldSearch('comments', ['text']);
+addFieldSearch('comments', ['text']);
 
 server.use(router);
 server.listen(3000, () => {
