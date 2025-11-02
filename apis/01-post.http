@@ -1,6 +1,9 @@
 ### list
 GET http://localhost:3000/posts
 
+### query
+GET http://localhost:3000/posts?_q=title
+
 ### show
 GET http://localhost:3000/posts/1
 
