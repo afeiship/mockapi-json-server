@@ -1,0 +1,26 @@
+### list
+GET http://localhost:3000/posts
+
+### show
+GET http://localhost:3000/posts/1
+
+### create
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+  "title": "Hello, world!",
+  "content": "This is my first post."
+}
+
+### update
+PUT http://localhost:3000/posts/1
+Content-Type: application/json
+
+{
+  "title": "Hello, world!",
+  "content": "This is my first post. (updated)"
+}
+
+### delete
+DELETE http://localhost:3000/posts/1
