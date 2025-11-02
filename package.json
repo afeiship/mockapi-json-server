@@ -6,6 +6,7 @@
   "description": "Mockapi based on json-server.",
   "license": "MIT",
   "scripts": {
+    "init": "cp src/db.sample.json src/db.json",
     "start": "node src/app.js"
   },
   "dependencies": {
