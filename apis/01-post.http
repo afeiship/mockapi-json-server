@@ -1,13 +1,22 @@
-### list
+### List all posts (返回 data 包装的数据和 total)
 GET http://localhost:3000/posts
 
-### query
-GET http://localhost:3000/posts?_q=title
+### Search posts by title (按标题搜索)
+GET http://localhost:3000/posts?_q=Hello
 
-### show
+### Get single post (返回 data 包装的单个对象)
 GET http://localhost:3000/posts/1
 
-### create
+### Pagination with _page and _per_page (分页：第1页，每页2条)
+GET http://localhost:3000/posts?_page=1&_per_page=2
+
+### Pagination with _page and _limit (分页：第2页，每页2条)
+GET http://localhost:3000/posts?_page=2&_limit=2
+
+### Pagination with _start and _limit (分页：从索引1开始，取2条)
+GET http://localhost:3000/posts?_start=1&_limit=2
+
+### Create post (创建新文章)
 POST http://localhost:3000/posts
 Content-Type: application/json
 
@@ -16,7 +25,7 @@ Content-Type: application/json
   "content": "This is my first post."
 }
 
-### update
+### Update post (更新文章)
 PUT http://localhost:3000/posts/1
 Content-Type: application/json
 
@@ -25,5 +34,14 @@ Content-Type: application/json
   "content": "This is my first post. (updated)"
 }
 
-### delete
+### Delete post (删除文章)
 DELETE http://localhost:3000/posts/1
+
+### Comments - List all (评论列表)
+GET http://localhost:3000/comments
+
+### Comments - Search by text (按文本搜索评论)
+GET http://localhost:3000/comments?_q=comment
+
+### Comments - Pagination (评论分页)
+GET http://localhost:3000/comments?_page=1&_per_page=1

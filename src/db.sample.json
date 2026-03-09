@@ -1,11 +1,19 @@
 {
   "posts": [
-    { "id": "1", "title": "a title", "views": 100 },
-    { "id": "2", "title": "another title", "views": 200 }
+    { "id": "1", "title": "Hello, world!", "content": "This is my first post.", "views": 100 },
+    { "id": "2", "title": "another title", "content": "Second post content", "views": 200 },
+    { "id": "3", "title": "Hello, world!", "content": "Third post content", "views": 150 },
+    { "id": "4", "title": "Fourth post", "content": "More content here", "views": 300 },
+    { "id": "5", "title": "Fifth post", "content": "Even more content", "views": 250 },
+    { "id": "6", "title": "Hello, world!", "content": "Sixth post content", "views": 180 },
+    { "id": "7", "title": "Seventh post", "content": "Last post content", "views": 220 }
   ],
   "comments": [
     { "id": "1", "text": "a comment about post 1", "postId": "1" },
-    { "id": "2", "text": "another comment about post 1", "postId": "1" }
+    { "id": "2", "text": "another comment about post 1", "postId": "1" },
+    { "id": "3", "text": "comment on post 2", "postId": "2" },
+    { "id": "4", "text": "another comment on post 2", "postId": "2" },
+    { "id": "5", "text": "comment on post 3", "postId": "3" }
   ],
   "profile": {
     "name": "typicode"
