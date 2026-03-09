@@ -1,0 +1,3 @@
+2026-03-09 21:51:53: Mock API server running on http://localhost:3000
+2026-03-09 21:51:55: [0mGET /posts?_per_page=3 [32m200[0m 5.857 ms - 1332[0m
+2026-03-09 21:52:10: [0mGET /posts [32m200[0m 3.702 ms - -[0m
