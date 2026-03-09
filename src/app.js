@@ -7,11 +7,18 @@ const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 
-// 支持 _per_page 参数（转换为 _limit）
+// 支持 _per_page 参数（转换为 _limit）并设置默认分页
 server.use((req, res, next) => {
+  // 如果指定了 _per_page，转换为 _limit
   if (req.query._per_page) {
     req.query._limit = req.query._per_page;
   }
+
+  // 如果既没有 _limit 也没有 _per_page，设置默认值为 10
+  if (!req.query._limit && !req.query._per_page) {
+    req.query._limit = '10';
+  }
+
   next();
 });
 
