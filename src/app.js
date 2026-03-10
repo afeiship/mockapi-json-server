@@ -16,7 +16,7 @@ server.use((req, res, next) => {
 
   // 如果既没有 _limit 也没有 _per_page，设置默认值为 10
   if (!req.query._limit && !req.query._per_page) {
-    req.query._limit = '10';
+    req.query._limit = "10";
   }
 
   next();
@@ -29,7 +29,7 @@ router.render = function (req, res) {
   // 如果是数组类型的数据（列表查询）
   if (Array.isArray(data)) {
     // 获取资源的名称（例如：posts, comments）
-    const resourceName = req.path.split('/')[1];
+    const resourceName = req.path.split("/")[1];
 
     // 从数据库获取完整的原始数据以计算准确的 total
     let total = data.length;
@@ -46,14 +46,14 @@ router.render = function (req, res) {
     // json-server 已经处理了分页，所以我们直接使用 data
     return res.jsonp({
       data: data,
-      total: total
+      total: total,
     });
   }
 
   // 如果是对象类型的数据（单条记录或其他对象）
-  if (data !== null && typeof data === 'object') {
+  if (data !== null && typeof data === "object") {
     return res.jsonp({
-      data: data
+      data: data,
     });
   }
 
@@ -74,13 +74,15 @@ function addFieldSearch(resource, searchableFields = ["title"]) {
         searchableFields.some(
           (field) =>
             item[field] &&
-            String(item[field]).toLowerCase().includes(String(_q).toLowerCase())
-        )
+            String(item[field])
+              .toLowerCase()
+              .includes(String(_q).toLowerCase()),
+        ),
       );
       // 返回包装格式
       return res.json({
         data: filtered,
-        total: filtered.length
+        total: filtered.length,
       });
     }
     next(); // 无 _q 则交还给 json-server 默认处理
@@ -90,9 +92,9 @@ function addFieldSearch(resource, searchableFields = ["title"]) {
 // 应用到 posts 资源，仅在 title 字段搜索
 addFieldSearch("posts", ["title"]);
 // 如果以后需要支持 comments 的 text 字段：
-addFieldSearch('comments', ['text']);
+addFieldSearch("comments", ["text"]);
 
 server.use(router);
-server.listen(3000, () => {
+server.listen(3008, () => {
   console.log("Mock API server running on http://localhost:3000");
 });
