@@ -64,7 +64,7 @@ router.render = function (req, res) {
 // 通用函数：为指定资源添加仅限字段的 _q 搜索
 function addFieldSearch(resource, searchableFields = ["title"]) {
   server.get(`/${resource}`, (req, res, next) => {
-    const { _q } = req.query;
+    const { _q, _page, _limit, _per_page } = req.query;
     if (_q) {
       const data = router.db.get(resource).value();
       if (!Array.isArray(data)) {
@@ -79,9 +79,17 @@ function addFieldSearch(resource, searchableFields = ["title"]) {
               .includes(String(_q).toLowerCase()),
         ),
       );
+
+      // 手动处理分页
+      const limit = parseInt(_limit || _per_page || 10);
+      const page = parseInt(_page || 1);
+      const start = (page - 1) * limit;
+      const end = start + limit;
+      const paginatedData = filtered.slice(start, end);
+
       // 返回包装格式
       return res.json({
-        data: filtered,
+        data: paginatedData,
         total: filtered.length,
       });
     }
