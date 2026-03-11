@@ -4,8 +4,14 @@ const path = require("path");
 const server = jsonServer.create();
 const router = jsonServer.router(path.join(__dirname, "db.json"));
 const middlewares = jsonServer.defaults();
+const simulate_delay = 500;
 
 server.use(middlewares);
+
+// 模拟真实API响应延迟（默认200ms）
+server.use((req, res, next) => {
+  setTimeout(() => next(), simulate_delay);
+});
 
 // 支持 _per_page 参数（转换为 _limit）并设置默认分页
 server.use((req, res, next) => {
