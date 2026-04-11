@@ -18,3 +18,5 @@ __pycache__
 
 src/db.json
 logs/*.log
+.vercel
+.env*.local
