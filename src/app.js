@@ -109,6 +109,14 @@ addFieldSearch("posts", ["title"]);
 addFieldSearch("comments", ["text"]);
 
 server.use(router);
-server.listen(3008, () => {
-  console.log("Mock API server running on http://localhost:3000");
-});
+
+// Vercel Serverless: 导出 app 实例
+module.exports = server;
+
+// 本地开发: 直接运行时启动服务器
+if (require.main === module) {
+  const port = process.env.PORT || 3008;
+  server.listen(port, () => {
+    console.log(`Mock API server running on http://localhost:${port}`);
+  });
+}
