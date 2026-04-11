@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "init": "cp src/db.sample.json src/db.json",
-    "build": "npm run init",
+    "build": "node generate-data.js",
     "start": "node src/app.js"
   },
   "dependencies": {
