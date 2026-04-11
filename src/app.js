@@ -1,8 +1,15 @@
 const jsonServer = require("json-server");
 const path = require("path");
+const fs = require("fs");
 
 const server = jsonServer.create();
-const router = jsonServer.router(path.join(__dirname, "db.json"));
+
+// 读取 JSON 文件作为内存数据库（兼容 Vercel 只读文件系统）
+const dbPath = fs.existsSync(path.join(__dirname, "db.json"))
+  ? path.join(__dirname, "db.json")
+  : path.join(__dirname, "db.sample.json");
+const db = JSON.parse(fs.readFileSync(dbPath, "utf-8"));
+const router = jsonServer.router(db);
 const middlewares = jsonServer.defaults();
 const simulate_delay = 500;
 
